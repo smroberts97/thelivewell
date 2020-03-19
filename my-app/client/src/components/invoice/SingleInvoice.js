@@ -15,9 +15,9 @@ export default class SingleInvoice extends Component {
             dateOfService: '',
             notes: '',
             paymentConfirmed: '',
-            customerId: ''
+            fishId: ''
         },
-        customerInfo: '',
+        fishInfo: '',
     }
 
     componentDidMount() {
@@ -30,9 +30,9 @@ export default class SingleInvoice extends Component {
         axios.get(`/api/invoice/${invoice}`)
             .then((res) => {
                 this.setState({ updatedInvoice: res.data })
-                axios.get(`/api/customer/${this.state.updatedInvoice.customerId}`)
+                axios.get(`/api/fish/${this.state.updatedInvoice.fishId}`)
                     .then((res) => {
-                        this.setState({ customerInfo: res.data.singleCustomer })
+                        this.setState({ fishInfo: res.data.singleFish })
                     })
             })
     }
@@ -74,12 +74,12 @@ export default class SingleInvoice extends Component {
 
     render() {
         const selectedInvoice = this.state.updatedInvoice
-        const customerInfo = this.state.customerInfo
-        const customerLink = `/customer/${customerInfo._id}`
+        const fishInfo = this.state.fishInfo
+        const fishLink = `/fish/${fishInfo._id}`
 
         return (
             <div className='singleView'>
-                <Link to={customerLink}><h1>{customerInfo.firstName} {customerInfo.lastName}</h1></Link>
+                <Link to={fishLink}><h1>{fishInfo.fishSpecies} {fishInfo.fishSpecies}</h1></Link>
                 <Grid
                     container
                     direction="row"

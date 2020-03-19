@@ -19,7 +19,7 @@ export default class EveryInvoice extends Component {
         paidFilteredList: [],
         clientFilteredList: [],
         filteredList: [],
-        customerList: []
+        fishList: []
     }
 
     componentDidMount() {
@@ -31,9 +31,9 @@ export default class EveryInvoice extends Component {
             .then((res) => {
                 this.setState({ invoiceList: res.data, filteredList: res.data, paidFilteredList: res.data, clientFilteredList: res.data })
             })
-        axios.get('/api/customer')
+        axios.get('/api/fish')
             .then((res) => {
-                this.setState({ customerList: res.data })
+                this.setState({ fishList: res.data })
             })
     }
 
@@ -107,7 +107,7 @@ export default class EveryInvoice extends Component {
             allSelected = false
             currentList = this.state.invoiceList
             newList = currentList.filter((invoice) => {
-                return invoice.customerId === e.target.value
+                return invoice.fishId === e.target.value
             })
         } else {
             allSelected = true
@@ -148,7 +148,7 @@ export default class EveryInvoice extends Component {
                             onChange={this.handleClientNameSelect}
                             >
                             <option value="" />
-                            {this.state.customerList.map((client) => {
+                            {this.state.fishList.map((client) => {
                                 const clientId = client._id
                                 return (
                                     <option value={clientId} key={clientId}>{client.firstName} {client.lastName}</option>
@@ -171,7 +171,7 @@ export default class EveryInvoice extends Component {
                                 invoiceLink={linkId}
                                 amount={invoice.amount}
                                 deleteInvoice={() => this.onInvoiceDeleteClick(invoiceId)}
-                                customerId={invoice.customerId}
+                                fishId={invoice.fishId}
                                 paid={invoice.paymentConfirmed}
                             />
                             <br />
