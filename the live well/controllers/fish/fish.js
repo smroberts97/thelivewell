@@ -2,7 +2,7 @@ const express = require('express')
 
 const fishApi = require('../../models/fish/fish.js')
 
-const inventoryApi = require('../../models/inventory/inventory.js')
+const inventoryApi = require('../../models/inventory/inventory.js.js')
 
 const invoiceApi = require('../../models/invoice/invoice.js')
 
