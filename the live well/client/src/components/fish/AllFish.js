@@ -35,7 +35,7 @@ export default class AllFish extends Component {
         if (e.target.value !== '') {
             currentList = this.state.fishList
             newList = currentList.filter((item) => {
-                const lowerCaseIncomingItem = item.fishSpecies.toLowerCase() + ' ' + item.lastName.toLowerCase();
+                const lowerCaseIncomingItem = item.fishSpecies.toLowerCase() + ' ' + item.fishLocation.toLowerCase();
                 const lowerCaseTextField = e.target.value.toLowerCase();
                 return lowerCaseIncomingItem.includes(lowerCaseTextField)
             })

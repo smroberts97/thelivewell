@@ -9,7 +9,7 @@ import axios from 'axios'
 
 export default class BaitCard extends Component {
     state = {
-        customerInfo: ''
+        fishInfo: ''
     }
 
     componentDidMount() {
@@ -17,16 +17,16 @@ export default class BaitCard extends Component {
     }
 
     refreshInvoice = () => {
-        const customerId = this.props.customerId
-        axios.get(`/api/customer/${customerId}`)
+        const fishId = this.props.fishId
+        axios.get(`/api/fish/${fishId}`)
             .then((res) => {
-                this.setState({ customerInfo: res.data.singleCustomer })
+                this.setState({ fishInfo: res.data.singleFish })
             })
     }
 
 
 render() {
-    const customerInfo = this.state.customerInfo
+    const fishInfo = this.state.fishInfo
     const isPaid = this.props.paid
     return (
         <Card className={isPaid ? 'card-paid' : 'card-not-paid'} variant="outlined">
@@ -40,10 +40,10 @@ render() {
                     </Link>
                 </Typography>
                 <Typography className='pos' color="textSecondary">
-                    Charter Client:
+                    Fish Caught:
                     </Typography>
                 <Typography variant="body1" component="p">
-                    {customerInfo.firstName} {customerInfo.lastName}
+                    {fishInfo.fishSpecies} {fishInfo.fishLocation}
                 </Typography>
                 <Typography className='pos' color="textSecondary">
                     Amount:

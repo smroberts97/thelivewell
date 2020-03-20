@@ -15,7 +15,7 @@ export default class BaitCard extends Component {
                         Lure or Bait Used
                     </Typography>
                     <Typography variant="h5" component="h2">
-                        <Link to={this.props.lureLink}>
+                        <Link to={this.props.itemLink}>
                             {this.props.bait}
                         </Link>
                     </Typography>
@@ -29,7 +29,7 @@ export default class BaitCard extends Component {
                 <CardActions>
                     <Button 
                         size="small"
-                        onClick={this.props.deleteBait}
+                        onClick={this.props.deleteItem}
                         >Delete Bait</Button>
                 </CardActions>
             </Card> 
